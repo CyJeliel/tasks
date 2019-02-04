@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,12 +37,15 @@ public class TaskController {
 	}
 
 	@PostMapping("/tasks/save")
-	public String saveTask(HttpServletRequest request, @Valid Task task, final BindingResult errors, Model model,
-			RedirectAttributes redirectAttributes) {
+	public ModelAndView saveTask(HttpServletRequest request, @Valid @ModelAttribute("task") Task task,
+			final BindingResult errors, Model model, RedirectAttributes redirectAttributes) {
 
+		ModelAndView mav;
 		if (errors.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.description", errors);
-			return "redirect:/";
+			mav = new ModelAndView("tasks", errors.getModel());
+			mav.addObject("tasks", tasks);
+			mav.addObject("task", new Task());
+			return mav;
 		}
 
 		if (task.getId() != null) {
@@ -56,7 +60,8 @@ public class TaskController {
 			repository.saveAndFlush(task);
 		}
 
-		return "redirect:/";
+		mav = new ModelAndView("redirect:/");
+		return mav;
 	}
 
 	@GetMapping(value = "/tasks/delete/{id}")

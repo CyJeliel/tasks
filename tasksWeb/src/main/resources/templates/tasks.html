@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>TODO Tasks</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+			<h3 class="form-signin-heading">New Task</h3>
+
+		<form action="#" th:action="@{/tasks/save}" th:object="${task}" method="post" class="form-signin">
+			<br /> 
+			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
+			<input type="text" th:field="*{description}" id="description" size="50" th:placeholder="Description" class="form-control" ></input>
+			<input type="hidden" th:field="*{id}" id="id" ></input>
+			<br />  
+			<input type="submit" value="Save"/>
+		</form>
+		<br />  
+		<table th:unless="${#lists.isEmpty(tasks)}">
+    		<tr th:each="task: ${tasks}">
+    			<td><input type="checkbox" th:field="*{task.completed}" /></td>
+    			<td></td>
+       			<td th:text="${task.description}" />
+       			<td><a th:href="@{/tasks/edit/{id}(id=${task.id})}">&emsp;Edit</a></td>
+       			<td><a th:href="@{/tasks/delete/{id}(id=${task.id})}">&emsp;Remove</a></td>
+   			</tr>
+		</table>
+		
+		<span th:if="${#lists.isEmpty(tasks)}">There are no TO DO Tasks</span> 
+	</div>
+</body>
+</html>

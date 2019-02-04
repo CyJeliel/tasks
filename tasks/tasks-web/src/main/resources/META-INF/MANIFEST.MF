@@ -1,0 +1,1 @@
+Main-Class: com.deloitte.tasks.web.config.Application

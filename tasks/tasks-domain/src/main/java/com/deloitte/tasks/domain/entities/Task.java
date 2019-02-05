@@ -23,7 +23,7 @@ public class Task implements DomainEntity {
 	private Long id;
 
 	@Column
-	@Size(min = 3, message = "* Please provide at least 3 characteres")
+	@Size(min = 3, max = 50, message = "* Please provide at least 3 characteres")
 	private String description;
 
 	@Column(name = "user_id")

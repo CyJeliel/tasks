@@ -7,7 +7,7 @@ services:
     ports:
     - 3306:3306
     environment:
-     MYSQL_ROOT_PASSWORD: '$deloitte2019Admin$'
+     MYSQL_ROOT_PASSWORD: "$$deloitte2019Admin$$
      MYSQL_USER: "tasks_user"
      MYSQL_PASSWORD: '#deloitte2019#'
      MYSQL_DATABASE: "db_tasks"

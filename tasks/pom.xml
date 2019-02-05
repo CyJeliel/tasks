@@ -44,8 +44,6 @@
 		<module>tasks-domain</module>
 		<module>tasks-repository</module>
 		<module>tasks-api</module>
-		<module>tasks-web</module>
 		<module>tasksWeb</module>
-		
 	</modules>
 </project>

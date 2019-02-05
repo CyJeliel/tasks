@@ -2,6 +2,8 @@ FROM maven:latest
 
 EXPOSE 8080
 
+COPY tasks/ /usr/src/tasks
+
 # Build the executable jar
 RUN cd /usr/src/tasks
 RUN mvn package

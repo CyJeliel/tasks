@@ -37,6 +37,7 @@ CREATE TABLE `authorities` (
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
 INSERT INTO `authorities` VALUES ('deloitte','ROLE_USER');
+INSERT INTO `authorities` VALUES ('deloitte2','ROLE_USER');
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +90,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES ('deloitte','$2a$10$J5J1/9SPZfMxsjMhjpnkFOHax4WA8ttAPEqPwF0qcRlDt9fczrkwq',1);
+INSERT INTO `users` VALUES ('deloitte2','$2a$10$J5J1/9SPZfMxsjMhjpnkFOHax4WA8ttAPEqPwF0qcRlDt9fczrkwq',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

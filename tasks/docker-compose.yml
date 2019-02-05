@@ -22,6 +22,6 @@ services:
     - .:/usr/src/tasks 
     - /Users/cindy.albuquerque/.m2/:/root/.m2
     working_dir: /usr/src/tasks
-    command: bash -c "sleep 30 && cd /usr/src/tasks && java -jar tasks-web/target/tasks-web-1.0.jar"  
+    command: bash -c "sleep 30 && cd /usr/src/tasks/tasks && java -jar tasks-web/target/tasks-web-1.0.jar"  
     stdin_open: true
     tty: true

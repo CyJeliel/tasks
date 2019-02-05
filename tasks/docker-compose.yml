@@ -14,7 +14,7 @@ services:
   java:
     container_name: tasks-web
     image: maven:latest
-    depends_on:
+    links:
     - db
     volumes:
     - .:/usr/src/tasks 

@@ -3,7 +3,7 @@ version: '3.3'
 services:
   db:
     container_name: db
-    build: .
+    image: database_tasks:latest
     ports:
     - 3306:3306
     environment:
@@ -16,10 +16,12 @@ services:
     image: maven:latest
     links:
     - db
+    depends_on:
+    - db
     volumes:
     - .:/usr/src/tasks 
     - /Users/cindy.albuquerque/.m2/:/root/.m2
     working_dir: /usr/src/tasks
-    command: bash -c "cd /usr/src/tasks && mvn package && java -jar tasks-web/target/tasks-web-1.0.jar"  
+    command: bash -c "cd /usr/src/tasks && java -jar tasks-web/target/tasks-web-1.0.jar"  
     stdin_open: true
     tty: true

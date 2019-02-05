@@ -1,7 +1,10 @@
-FROM mysql:8.0.14
+FROM maven:latest
 
-COPY database_load.sql /docker-entrypoint-initdb.d/database_load.sql
+EXPOSE 8080
 
-EXPOSE 3306
+# Build the executable jar
+RUN cd /usr/src/tasks
+RUN mvn package
 
-CMD ["mysqld"]
+# Execute the built jar
+RUN java -jar tasks/tasks-web/target/tasks-web-1.0.jar

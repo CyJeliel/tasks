@@ -1,5 +1,3 @@
-####### WORKING ########
-
 # create mysql instance
 FROM mysql:8.0.14
 
@@ -11,4 +9,3 @@ EXPOSE 3306
 
 # 
 CMD ["mysqld"]
-########## WORKING ############

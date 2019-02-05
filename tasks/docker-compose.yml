@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: db
+    image: database_tasks:latest
+    ports:
+    - 3306
+    environment:
+     MYSQL_ROOT_PASSWORD: "$deloitte2019Admin$"
+     MYSQL_USER: "tasks_user"
+     MYSQL_PASSWORD: "#deloitte2019#"
+     MYSQL_DATABASE: "db_tasks"
+  java:
+    container_name: tasks-web
+    image: maven:latest
+    depends_on:
+    - db
+    volumes:
+    - .:/usr/src/tasks 
+    - "$HOME/.m2":/root/.m2
+    working_dir: /usr/src/tasks
+    command: bash -c "cd /usr/src/tasks && mvn package && jva -jar tasks-web/target/tasks-web-1.0.jar"  
+    stdin_open: true
+    tty: true

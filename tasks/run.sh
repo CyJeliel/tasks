@@ -1,8 +1,7 @@
 #!/bin/bash
 
 
-
-cd Documents/
+cd ~/Documents/
 
 
 mkdir app_tasks
@@ -24,3 +23,4 @@ cd ..
 
 
 docker-compose up
+
